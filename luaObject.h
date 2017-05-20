@@ -173,8 +173,8 @@ public:
 	}
 
 private:
-	lua_State *m_plState;
 	int m_iKeyIndex;
+	lua_State *m_plState;
 	int *counter;
 };
 }

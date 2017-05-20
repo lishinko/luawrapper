@@ -28,30 +28,30 @@
 #include "PopValue.h"
 #include "ObjPush.h"
 
-namespace luacpp{
-
-class luaWrapper
+namespace luacpp
 {
-public:
-	operator lua_State* ()
-	{
-		return lState;
-	}
 
-	void init();
-	luaWrapper(){init();}
-	~luaWrapper()
+	class luaWrapper
 	{
-		if(lState)
-			lua_close(lState);
-		lState = NULL;
-	}
+	public:
+		operator lua_State* ()
+		{
+			return lState;
+		}
+
+		void init();
+		luaWrapper();
+		~luaWrapper()
+		{
+			clear();
+		}
+		void clear();
 	
-	bool dofile(const char *filename);
+		bool dofile(const char *filename);
 	
-private:
-	lua_State *lState;
-};
+	private:
+		lua_State *lState;
+	};
 }
 
 #endif

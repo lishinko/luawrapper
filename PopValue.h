@@ -113,7 +113,8 @@ inline int64_t popvalue(lua_State *L)
 	if(lua_isuserdata(L,-1))
 	{
 		const void *r = lua_touserdata(L,-1);
-		if(((Integer64*)r)->GetFlag() == 0XFEDC1234)
+		int flag = ((Integer64*)r)->GetFlag(); 
+		if(static_cast<unsigned int>(flag) == 0XFEDC1234)
 		{
 			Integer64 *ret = (Integer64*)lua_touserdata(L,-1);
 			lua_pop(L,1);
@@ -166,7 +167,8 @@ inline luatable popvalue(lua_State *L)
 		else if(type == LUA_TUSERDATA)
 		{
 			const void *r = lua_touserdata(L,-1);
-			if(((Integer64*)r)->GetFlag() == 0XFEDC1234)
+			int flag = ((Integer64*)r)->GetFlag(); 
+			if(static_cast<unsigned int>(flag) == 0XFEDC1234)
 				ret.push_back(((Integer64*)r)->GetValue());
 			else if(((objUserData<void>*)r)->m_flag == 0x1234AFEC)
 				ret.push_back((const void*)((objUserData<void>*)r)->ptr);

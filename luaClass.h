@@ -130,7 +130,7 @@ public:
 #ifdef _VC
 		_snprintf_s(temp,512,"%I64d", i64self->m_val);
 #else
-		snprintf(temp,512, "%lld", i64self->m_val);
+		snprintf(temp,512, "%ld", i64self->m_val);
 #endif
 		lua_pushstring(L, temp);
 		return 1;
