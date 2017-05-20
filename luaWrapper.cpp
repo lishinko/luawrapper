@@ -1,4 +1,4 @@
-#include "luawrapper/luaWrapper.h"
+#include "luaWrapper.h"
 #include <cstdlib>
 
 using namespace std;
